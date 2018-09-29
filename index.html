@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .imgdiv{
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+        list-style:none;
+        border: 2px solid black;
+        position: relative;
+        
+    }
+    .imgdiv  ul  li{
+        position: absolute;
+        width: 300px;
+    }
+
+    .imgdiv > ul > li > img{
+        width: 300px;
+        height: 200px;
+    }
+
+</style>
+<body>
+
+    <div class="imgdiv">
+        <ul>
+            <li><img src="balloon1.png" alt=""></li>
+            <li><img src="balloon2.png" alt=""></li>
+            <li><img src="balloon3.png" alt=""></li>
+        </ul>
+    </div>
+    
+    <div class="button">
+        <input type="button" value="넘기기" id="nextbutton">
+    </div>
+
+
+    <script>
+        var imgdivwidth =  parseInt(document.querySelector(".imgdiv").style.width);
+        let imgs = document.querySelectorAll(".imgdiv ul li");
+        initimg(imgs);
+        let img = imgobj(0);
+        let nbutton = document.getElementById("nextbutton");
+        nbutton.addEventListener('click',function(){
+            sliding(img,10);
+        });//end event;
+
+
+
+        function imgobj(index){
+            this.index = index;
+            return {
+                getobjindex:function(){
+                    return index;
+                },
+                setobjindex:function(id){
+                    index = id;
+                }
+            }
+        }
+        function initimg(imgs,index){
+          imgs.forEach((el,i) => {
+            index = index ? index : 0;  
+            let init =  i != index ? '-300px' : '0px';
+            el.style.left = init;
+        });
+        }
+
+        function sliding(img,frame){
+            
+            var curimgleft = imgs[checkimgindex(img.getobjindex())].style.left;
+            var nextimgleft = imgs[checkimgindex(img.getobjindex() + 1)].style.left;
+
+            curimgleft = parseInt(curimgleft) + frame;
+            nextimgleft = parseInt(nextimgleft) + frame;
+            console.log(curimgleft,nextimgleft);
+
+            if(nextimgleft >= 0){
+                img.setobjindex(checkimgindex(img.getobjindex() + 1));
+                initimg(imgs,img.getobjindex());
+                return;
+            }
+
+            setTimeout(function(){
+                sliding(img,10);
+            },20);
+
+        }
+
+        function checkimgindex(index){
+
+            return index > imgs.length -1 ? 0 : index;
+        }
+
+    </script>
+</body>
+</html>
