@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<script src="imgsfunction.js"></script>
 <style>
     .imgdiv{
         width: 300px;
@@ -34,70 +35,41 @@
             <li><img src="balloon1.png" alt=""></li>
             <li><img src="balloon2.png" alt=""></li>
             <li><img src="balloon3.png" alt=""></li>
+            <li><img src="balloon4.png" alt=""></li>
+            <li><img src="balloon5.png" alt=""></li>
         </ul>
     </div>
     
     <div class="button">
         <input type="button" value="넘기기" id="nextbutton">
+        <input type="button" value="뒤로넘기기" id="backbutton">
     </div>
 
 
     <script>
-        var imgdivwidth =  parseInt(document.querySelector(".imgdiv").style.width);
-        let imgs = document.querySelectorAll(".imgdiv ul li");
+        var imgdivwidth =  parseInt(document.querySelector(".imgdiv").getBoundingClientRect().width);
+        //console.log(document.querySelector(".imgdiv").getBoundingClientRect().width);
+        //console.log(imgdivwidth);
+        var imgs = document.querySelectorAll(".imgdiv ul li");
         initimg(imgs);
-        let img = imgobj(0);
-        let nbutton = document.getElementById("nextbutton");
+        //초기 이미지 세팅
+        var img = imgobj(0);
+        //넘기기 버튼
+        var nbutton = document.getElementById("nextbutton");
+        var bbutton = document.getElementById("backbutton");
         nbutton.addEventListener('click',function(){
-            sliding(img,10);
+            sliding(imgs,img,10,1);
         });//end event;
+        bbutton.addEventListener('click',function(){
+            sliding(imgs,img,10,-1);
+        });//end event;
+      
 
+        //5초에 한번 실행
+         setInterval(function (){
+            sliding(imgs,img,20,1);
+        },3000)  
 
-
-        function imgobj(index){
-            this.index = index;
-            return {
-                getobjindex:function(){
-                    return index;
-                },
-                setobjindex:function(id){
-                    index = id;
-                }
-            }
-        }
-        function initimg(imgs,index){
-          imgs.forEach((el,i) => {
-            index = index ? index : 0;  
-            let init =  i != index ? '-300px' : '0px';
-            el.style.left = init;
-        });
-        }
-
-        function sliding(img,frame){
-            
-            var curimgleft = imgs[checkimgindex(img.getobjindex())].style.left;
-            var nextimgleft = imgs[checkimgindex(img.getobjindex() + 1)].style.left;
-
-            curimgleft = parseInt(curimgleft) + frame;
-            nextimgleft = parseInt(nextimgleft) + frame;
-            console.log(curimgleft,nextimgleft);
-
-            if(nextimgleft >= 0){
-                img.setobjindex(checkimgindex(img.getobjindex() + 1));
-                initimg(imgs,img.getobjindex());
-                return;
-            }
-
-            setTimeout(function(){
-                sliding(img,10);
-            },20);
-
-        }
-
-        function checkimgindex(index){
-
-            return index > imgs.length -1 ? 0 : index;
-        }
 
     </script>
 </body>
