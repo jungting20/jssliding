@@ -5,12 +5,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="slide.js"></script>
         <style>
             header{
                 width: 100%;
-                height: 200px;
+                height: 230px;
                 background-color: #00a0f0;
-                background-image: url(logo.png);
+                background-image: url(img/logo.png);
                 background-position: left center;
                 background-position-x: 40pt;
                 background-repeat: no-repeat;
@@ -24,40 +25,67 @@
 
             #menu_top{float: right; width:35%; text-align: right; padding-right: 30pt; margin-top: 20pt}
             .li_top{display: inline; padding-left: 10pt;}
-            .li_menu{display: inline; padding-left: 20pt;}
+            .li_menu{display: inline; padding-left: 20pt; text-decoration: none;}
+
             .a_white{color: white}
-            .a_skyblue{color: #00a0f0; text-decoration: none; font-weight: bold;}
+            .a_skyblue{color: #00a0f0; text-decoration: none;}
             .font_white{color :white; padding-right: 30pt; }
             /*메인부분*/
             .main_wrapper {width: 100%; height: 100%; float: left; }
-            .main_wrapper div{float: left;color: black; }
-            .item1{border: 1px dotted;margin: 1%;width: 46%; height: 60%;}
-            .item2_1{border: 1px dotted;margin: 0.5%;width: 23%; height: 38%}
-            .item3_1{border: 1px dotted;margin: 0.5%;width: 23%; height: 38%}
-            .item2_2{border: 1px dotted;margin: 0.5%;width: 23%; height: 20%;  }
-            .item3_2{border: 1px dotted;margin: 0.5%;width: 23%; height: 20%; }
-            .item4{border: 1px dotted;margin: 1%;width: 46%; height: 36%;}
-            .item5{border: 1px dotted;margin: 0.5%;width: 23%; height: 36%;}
-            .item6{border: 1px dotted;margin: 0.5%;width: 23%; height: 36%;}
+            .main_wrapper div.item{float: left;color: black; }
+            .item34 div{
+                float: left;
+                display: table;
+            }
+            .item1{margin: 0.5%;width: 48%; height: 60%;}
+            .item2{margin: 1%;width: 48%; height: 60%; }
+            .item3{margin: 0.5%;width: 48%; height: 36%; overflow: hidden;display: table-cell;}
+            .item4{margin: 0.5%;width: 48%; height: 36%; display: table-cell;}
 
+            .item2_1{margin: 0.5%;width: 48%; height: 60%;float: left;}
+            .item2_2{margin: 0.5%;width: 48%; height: 60%;float: left;}
+            .item2_3{margin: 0.5%;width: 48%; height: 38%;float: left;}
+            .item2_4{margin: 0.5%;width: 48%; height: 38%;float: left;}
+            .item4_1{margin: 0.5%;width: 48%; height: 100%;float: left; }
+            .item4_2{margin: 0.5%;width: 48%; height: 100%;float: left; background-color:#00a0f0; color: white; }
             /*텍스트*/
-            .main_text{background-color: #eef0f2; text-decoration: none;}
-            .headline{font-size: 20pt; font-weight: bold; color: black;}
+            .main_text{background-color: #eef0f2; text-decoration: none; overflow: hidden;}
+            .headline{font-size: 10pt; color: silver; text-decoration: none;}
+            .subheadline{font-size: 20pt; font-weight: bold; color: black;text-decoration: none;}
+            .text{color: black; text-decoration: none;}
             .category{font-size: 10pt;}
             /*기사부분*/
             .news {width: 100%; height: 100%; float: left; border: 1px; margin: 30px;}
-            .news .news1{float: left;border: 2px; margin: 10px;width:31%;}
-            .stage p, .box p{font-size: 20pt; text-align: center;}
-
+            .news .news1, .news .news2, .news .news3{float: left;border: 2px; margin: 10px;width:31%;}
+            .stage p, .box p{font-size: 24pt; text-align: center;}
+            .none{text-decoration: none;}
 
             #logo{color: white; font-size: 15pt; text-decoration: none; padding-left: 40pt; font-weight: bold; }
             #nav{list-style-type: none; height: 50px; padding: 5px 7px; }
             /*슬라이드부분*/
             .slide{max-width: 1600px;}
             .slides{width: 100%}
-            /*            //드롭다운부분*/
-            .dropdown,.dropdown2,.dropdown3{ display: none;
+            .imgdiv{
+                overflow: hidden;
+                list-style: none;
+                border: 2px solid black;
+                position: relative;
+                width: 100%;
+                height: 900px;
             }
+            .imgdiv ul li{
+                position:absolute;
+                width: 100%;
+            }
+            .imgdiv ul li img {
+                width: 100%;
+            }
+            /*            //드롭다운부분*/
+            
+            .dropdown,.dropdown2,.dropdown3{ display: none;}
+            .dropdown ul li,.dropdown2 ul li,.dropdown3 ul li{list-style: none; border-bottom: 1px solid silver; width: 30%; margin-top: 10px;}
+            .dropdown ul li a{ font-size: 16pt; padding-left: 0px; margin-bottom: 10pt; margin-top: 10pt;}
+            .dropdown ul {border-top: 2px solid silver; margin-top: 10px}
         </style>
     </head>
     <body>
@@ -82,259 +110,297 @@
                 </a>
             </div>
         </header>
-
+      
         <ul>
-            <li class="li_menu"><a href="#"><span id="jepum">제품</span></a></li>
-            <li class="li_menu"><a href="#"><span id="bumwi">적용범위</span></a></li>
+            <li class="li_menu"><a href="#"class="a_skyblue"><span id="jepum">제품</span></a></li>
+            <li class="li_menu"><a href="#"class="a_skyblue"><span id="bumwi">적용범위</span></a></li>
             <li class="li_menu"><a class="a_skyblue" href="">서비스</a></li>
             <li class="li_menu"><a class="a_skyblue" href="">교체공사</a></li>
-            <li class="li_menu"><a href="#"><span id="company">회사소개</span></a></li>
-            <div class="dropdown">
+            <li class="li_menu"><a href="#"class="a_skyblue"><span id="company">회사소개</span></a></li>
+            <div class="dropdown closedrop">
+                <ul class="one">
+                    <li style="height:90px; border-top:1px solid silver; width: 30%">
+                        <span class="a_skyblue">개요</span><br>
+                        <a href=""class="a_skyblue">제품</a>
+                    </li>
+                    <li><a href=""class="a_skyblue">엘리베이터</a>
+
+                    </li>
+                    <li><a href=""class="a_skyblue">에스컬레이터</a></li>
+                    <li><a href=""class="a_skyblue">무빙워크</a></li>
+                    <li><a href=""class="a_skyblue">AGILE</a></li>
+                    <li><a href=""class="a_skyblue">MULTI</a></li>
+                    <li><a href=""class="a_skyblue">ACCEL</a></li>
+                    <li><a href=""class="a_skyblue">MAX</a></li>
+                    <li><a href=""class="a_skyblue">홈 솔루션</a></li>
+                    <li><a href=""class="a_skyblue">탑승교</a></li>
+                </ul>
+<!--                <ul class="one">
+                    <li>
+                        <span class="a_skyblue">개요</span><br>
+                        <a href=""class="a_skyblue">엘리베이터</a>
+                    </li>
+                    <li><a href=""class="a_skyblue">enta200</a></li>
+                    <li><a href=""class="a_skyblue">Elejet</a></li>
+                    <li><a href=""class="a_skyblue">TWIN</a></li>
+                </ul>-->
+            </div>
+            <div class="dropdown2 closedrop">
                 <ul>
                     <li>
-                        <span>개요</span>
-                        <a href="">제품</a>
+                        <span class="a_skyblue">개요</span>
+                        <a href=""class="a_skyblue">적용 범위</a>
                     </li>
-                    <li class=""><a href="">엘리베이터</a></li>
-                    <li><a href="">에스컬레이터</a></li>
-                    <li><a href="">무빙워크</a></li>
-                    <li><a href="">AGILE</a></li>
-                    <li><a href="">MULTI</a></li>
-                    <li><a href="">ACCEL</a></li>
-                    <li><a href="">MAX</a></li>
-                    <li><a href="">홈 솔루션</a></li>
-                    <li><a href="">탑승교</a></li>
+                    <li><a href=""class="a_skyblue">교육</a></li>
+                    <li><a href=""class="a_skyblue">엔터테인먼트</a></li>
+                    <li><a href=""class="a_skyblue">병원</a></li>
+                    <li><a href=""class="a_skyblue">호텔</a></li>
+                    <li><a href=""class="a_skyblue">산업용</a></li>
+                    <li><a href=""class="a_skyblue">교통시설</a></li>
+                    <li><a href=""class="a_skyblue">오피스</a></li>
+                    <li><a href=""class="a_skyblue">주거용</a></li>
+                    <li><a href=""class="a_skyblue">상가건물</a></li>
                 </ul>
             </div>
-            <div class="dropdown2">
+            <div class="dropdown3 closedrop">
                 <ul>
-                    <li>
-                        <span>개요</span>
-                        <a href="">적용 범위</a>
-                    </li>
-                    <li class=""><a href="">교육</a></li>
-                    <li><a href="">엔터테인먼트</a></li>
-                    <li><a href="">병원</a></li>
-                    <li><a href="">호텔</a></li>
-                    <li><a href="">산업용</a></li>
-                    <li><a href="">교통시설</a></li>
-                    <li><a href="">오피스</a></li>
-                    <li><a href="">주거용</a></li>
-                    <li><a href="">상가건물</a></li>
-                </ul>
-            </div>
-            <div class="dropdown3">
-                <ul>
-                    <li><a href="">회사 개요</a></li>
-                    <li><a href="">연혁</a></li>
-                    <li><a href="">지속가능경영</a></li>
-                    <li><a href="">공정거래 자율준수</a></li>
+                    <li><a href=""class="a_skyblue">회사 개요</a></li>
+                    <li><a href=""class="a_skyblue">연혁</a></li>
+                    <li><a href=""class="a_skyblue">지속가능경영</a></li>
+                    <li><a href=""class="a_skyblue">공정거래 자율준수</a></li>
                 </ul>
             </div>
         </ul>
+        
 
         <div class="main_wrapper">
-            <div class="item1">
+
+            <div class="item1 item">
                 <a href="#">
                     <img src="img/elevator.png" title="Get all the inormation about elevators by thyssenkrupp">
                 </a>
             </div>
-            <div class="item2_1">
-                <a href=""> <img src="img/es.png" title="Escalators by thyssenkrupp elevators"></a>
-            </div>
-            <div class="item3_1">
-                <a href="">
-                    <img src="img/moving.png" title="Moving walks by thyssenkrupp Elevators"></a>
-            </div>
-            <div class="item2_2">
-                <div class="main_text">
-                    <a href="">
-                        <div >
-                            <p class="category">건설경제신문, 문수아 기자 | 티센크루프, 국내 최대 승강기 프로젝트 ‘파크원’ 수주</p> 
-                            <p>.. 더보기</p> 
-                        </div>
+            <div class="item2 item">
+                <div class="item2_1">
+                    <img src="img/es.png" title="Escalators by thyssenkrupp elevators">
                 </div>
-                </a>
-            </div>
-            <div class="item3_2">
-                <div class='main_text'>
-                    <a href="">
-                        <div>
-                            <p class="category">세계 최초의 로프없는 수평/수직엘리베이터, 멀티 시스템 2017년 타임지가 선정한 “25대 최고의 발명품”</p> 
-                            <p><sub>..더보기 </sub></p> 
-                        </div>
-                    </a>
+                <div class="item2_2">
+                    <img src="img/moving.png" title="Moving walks by thyssenkrupp Elevators">
                 </div>
 
+                <div class="item2_3">
+                    <div class="main_text">
+                        <p class="category">건설경제신문, 문수아 기자 | 티센크루프, 국내 최대 승강기 프로젝트 ‘파크원’ 수주</p> 
+                        <p>.. 더보기</p> 
+
+                    </div>
+                </div>
+
+                <div class="item2_4">
+                    <div class='main_text'>
+                        <p class="category">세계 최초의 로프없는 수평/수직엘리베이터, 멀티 시스템 2017년 타임지가 선정한 “25대 최고의 발명품”</p> 
+                        <p><sub>..더보기 </sub></p> 
+                    </div>
+                </div>
             </div>
-            <br>
-            <div class="item4">
-                <a href="">
+            <div class="item34 item">
+                <div class="item3">
+
                     <div class="main_text">
                         <p>티센크루프엘리베이터코리아 </p> 
-                        <p class="headline">engineering.tomorrow.together.</p> 
+                        <p class="subheadline">engineering.tomorrow.together.</p> 
                         <p>티센크루프엘리베이터는 국내 승강기 기업들 가운데 50년 이상의 역사를 보유하고 있는 승강기 전문 기업으로 세계 최고의 수준의 기술력 및 시스템을 자랑합니다. 건물 용도 및 사양에 따라 최고의 전문 엔지니어링들이 모여 에너지 효율적인 운송 서비스 시설을 제공하고 있습니다. 티센크루프엘리베이터코리아는 국내 최고의 스마트 제조시설을 자랑하는 천안공장을 보유하고 있으며 엘리베이터, 에스컬레이터, 무빙 워크, 탑승교, 장애인 리프트 등 모든 승강기 제품 및 고객을 위한 다양한 맞춤형 솔루션을 제공합니다. 아울러 13개의 직영 서비스 및 72개의 서비스 파트너사를 보유하여 최상의 유지보수 서비스를 제공하고 있습니다.</p> 
                     </div> </a>
+                </div>
+
+
+                <div class="item4">
+                    <div class="item4_1">
+                        <a href=""> <img src="img/service.png"></a>
+                    </div>
+                    <div class="item4_2">
+                        <div class="">
+                            <p class="headline">관련 검색</p>
+                            <ul>
+                                <li>
+                                    <a href="">제품</a>
+                                </li>
+                                <li>
+                                    <a href="">연락처</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </a>
-    </div>
-    <div class="item5">
-        <a href=""> <img src="img/service.png"></a>
-    </div>
-    <div class="item6">
-        <div class="">
-            <p class="headline">관련 검색</p>
-            <ul>
-                <li>
-                    <a href="">제품</a>
-                </li>
-                <li>
-                    <a href="">연락처</a>
-                </li>
-            </ul>
         </div>
-    </div>  
-</div>
-<div class="stage">
-    <p>티센크루프만의 혁신 기술</p>
-    <div class="slide">
-        <img class="slides" src="img/multi.png" >
-        <img class="slides" src="img/accel.png">
-        <img class="slides" src="img/max.png">
-        <img class="slides" src="img/twin.png"> 
-    </div>
 
-</div>
-
-<div class="news">
-    <div class="news1">
-        <div>
-            <img src="img/news1.png" title="thyssenkrupp Elevator Korea seals the largest TWIN project In Asia.">
+        <div class="stage">
+            <p>티센크루프만의 혁신 기술</p>
+            <div class="imgdiv">
+                <ul>
+                    <li> <img class="slides" src="img/multi.png" ></li>
+                    <li> <img class="slides" src="img/accel.png"></li>
+                    <li> <img class="slides" src="img/max.png"></li>
+                    <li>  <img class="slides" src="img/twin.png"> </li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <a href=""> 
-                <figure> 
-                    <figcaption> 
-                        <div> 
-                            <p class="headline"> 트윈엘리베이터 56대 포함 총 82대 공급 </p> 
-                            <p class="subheadline"> 티센크루프, 여의도 ‘파크원’ 승강기 프로젝트 ‘수주’ </p> 
-                            <div class="text"> <p> 티센크루프엘리베이터는 7일 파크원에 승강기 82대를 공급, 설치하는 계약을 체결했다고 밝혔다. 티센크루프엘리베이터의 특허 제품인 트윈 엘리베이터 56대, 1분에 600ｍ를 이동하는 초고속 엘리베이터 등을 공급하게 된다. 
-                                </p> 
-                            </div> 
-                        </div> 
-                    </figcaption> 
-                </figure> 
-            </a>
-        </div>      
-    </div>
-    <div class="news1">
-        <div>
-            <img src="img/news2.png" title="thyssenkrupp Elevator (Korea) helped out for the damaged Nursery at Pohang by natural disaster, Earthquake">
+
+        <div class="news">
+            <div class="news1">
+                <div>
+                    <img src="img/news1.png" title="thyssenkrupp Elevator Korea seals the largest TWIN project In Asia.">
+                </div>
+                <div>
+                    <a class="none" href=""> 
+                        <figure> 
+                            <figcaption> 
+                                <div> 
+                                    <p class="headline"> 트윈엘리베이터 56대 포함 총 82대 공급 </p> 
+                                    <p class="subheadline"> 티센크루프, 여의도 ‘파크원’ 승강기 프로젝트 ‘수주’ </p> 
+                                    <div class="text"> <p> 티센크루프엘리베이터는 7일 파크원에 승강기 82대를 공급, 설치하는 계약을 체결했다고 밝혔다. 티센크루프엘리베이터의 특허 제품인 트윈 엘리베이터 56대, 1분에 600ｍ를 이동하는 초고속 엘리베이터 등을 공급하게 된다. 
+                                        </p> 
+                                    </div> 
+                                </div> 
+                            </figcaption> 
+                        </figure> 
+                    </a>
+                </div>      
+            </div>
+            <div class="news2">
+                <div>
+                    <img src="img/news2.png" title="thyssenkrupp Elevator (Korea) helped out for the damaged Nursery at Pohang by natural disaster, Earthquake">
+                </div>
+                <div>
+                    <a class="none" href=""> 
+                        <figure> 
+                            <figcaption> 
+                                <div> 
+                                    <p class="headline">[티센크루프엘리베이터코리아]스마트팩토리 기반 일하기 좋은 기업문화 조성 </p> 
+                                    <p class="subheadline">[2018 대한민국 공감경영대상] 직원 우선 경영으로 양질의 일자리 창출_티센크루프엘리베이터 </p> 
+                                    <div class="text"> <p>티센크루프 독일 본사에서 실시한 2014년 글로벌 설문 조사에서 한국인들의 ‘일하기 좋은 만족도’ 는 51%로 집계되었고, 박 CEO는 ‘일하기 좋은 기업’을 만들기 위해 천안공장을 최첨단 생산시설을 갖춘 스마트팩토리를 기반으로 한 ‘구글 오피스’처럼 바꾸겠다고 선언후, 2015년 천안공장을 리모델링을 시작해 카페에서 회의를 하고, 휴식공간에서 재충전의 시간을 가질 뿐 아니라 회사에서 영화를 보고, 스크린골프를 치며, 사우나를 즐길 수 있는 공간으로 탈바꿈한 결과 2016년 실시한 직원 만족도 조사에서 만족도가 83%로 급상승하는 성과를 거두었다.. 더보기
+                                        </p> 
+                                    </div> 
+                                </div> 
+                            </figcaption> 
+                        </figure> 
+                    </a>
+                </div>      
+            </div>
+            <div class="news3">
+                <div>
+                    <img src="img/news1.png" title="thyssenkrupp Elevator Korea introduced 'Service Car' for Maintenance">
+                </div>
+                <div>
+                    <a class="none" href=""> 
+                        <figure> 
+                            <figcaption> 
+                                <div> 
+                                    <p class="headline">사물인터넷 시대에 서비스매니저 고객 접근성 강화 </p> 
+                                    <p class="subheadline">티센크루프엘리베이터, 유지보수 전용 ‘서비스카’ 도입 </p> 
+                                    <div class="text"> <p> 티센크루프엘리베이터가 승강기 서비스 수준을 한 단계 업그레이드했다.티센크루프엘리베이터코리아(대표 박양춘)는 현장에서 승강기 유지보수를 담당하는 서비스매니저에게 전용차량 ‘서비스카’를 지급했다고 밝혔다. 티센크루프는 지난 9월 27일 서울 양천구 계남다목적체육관 주차장에서 열린 서비스카 출범식에서 1차 출고분 20대를 서비스매니저에게 인도했으며, 향후 협력사까지 대상을 확대해 1000여대를 단계적으로 지급할 계획이다. 
+                                        </p> 
+                                    </div> 
+                                </div> 
+                            </figcaption> 
+                        </figure> 
+                    </a>
+                </div>      
+            </div>
+
         </div>
-        <div>
-            <a href=""> 
-                <figure> 
-                    <figcaption> 
-                        <div> 
-                            <p class="headline">[티센크루프엘리베이터코리아]스마트팩토리 기반 일하기 좋은 기업문화 조성 </p> 
-                            <p class="subheadline">[2018 대한민국 공감경영대상] 직원 우선 경영으로 양질의 일자리 창출_티센크루프엘리베이터 </p> 
-                            <div class="text"> <p>티센크루프 독일 본사에서 실시한 2014년 글로벌 설문 조사에서 한국인들의 ‘일하기 좋은 만족도’ 는 51%로 집계되었고, 박 CEO는 ‘일하기 좋은 기업’을 만들기 위해 천안공장을 최첨단 생산시설을 갖춘 스마트팩토리를 기반으로 한 ‘구글 오피스’처럼 바꾸겠다고 선언후, 2015년 천안공장을 리모델링을 시작해 카페에서 회의를 하고, 휴식공간에서 재충전의 시간을 가질 뿐 아니라 회사에서 영화를 보고, 스크린골프를 치며, 사우나를 즐길 수 있는 공간으로 탈바꿈한 결과 2016년 실시한 직원 만족도 조사에서 만족도가 83%로 급상승하는 성과를 거두었다.. 더보기
-                                </p> 
-                            </div> 
-                        </div> 
-                    </figcaption> 
-                </figure> 
-            </a>
-        </div>      
-    </div>
-    <div class="news1">
-        <div>
-            <img src="img/news1.png" title="thyssenkrupp Elevator Korea introduced 'Service Car' for Maintenance">
+        <div class="box">
+            <p>다양한 건물 용도에 적합한 솔루션 제공</p>
+            <div>
+                <img src="img/box1.png">
+            </div>
         </div>
-        <div>
-            <a href=""> 
-                <figure> 
-                    <figcaption> 
-                        <div> 
-                            <p class="headline">사물인터넷 시대에 서비스매니저 고객 접근성 강화 </p> 
-                            <p class="subheadline">티센크루프엘리베이터, 유지보수 전용 ‘서비스카’ 도입 </p> 
-                            <div class="text"> <p> 티센크루프엘리베이터가 승강기 서비스 수준을 한 단계 업그레이드했다.티센크루프엘리베이터코리아(대표 박양춘)는 현장에서 승강기 유지보수를 담당하는 서비스매니저에게 전용차량 ‘서비스카’를 지급했다고 밝혔다. 티센크루프는 지난 9월 27일 서울 양천구 계남다목적체육관 주차장에서 열린 서비스카 출범식에서 1차 출고분 20대를 서비스매니저에게 인도했으며, 향후 협력사까지 대상을 확대해 1000여대를 단계적으로 지급할 계획이다. 
-                                </p> 
-                            </div> 
-                        </div> 
-                    </figcaption> 
-                </figure> 
-            </a>
-        </div>      
-    </div>
+        <div class="footer">
+            <div>
+                <p class="font_white">Elevator Technology</p>
+                <p class="font_white">코리아</p>
+            </div>
+            <div>
+                <ul align="right">
+                    <li class=""><a class="a_white" href="">제품</a></li>
+                    <li class=""><a class="a_white" href="">교체공사</a></li>
+                    <li class=""><a class="a_white" href="">서비스</a></li>
 
-</div>
-<div class="box">
-    <p>다양한 건물 용도에 적합한 솔루션 제공</p>
-    <div>
-        <img src="img/box1.png">
-    </div>
-</div>
-<div class="footer">
-    <div>
-        <p class="font_white">Elevator Technology</p>
-        <p class="font_white">코리아</p>
-    </div>
-    <div>
-        <ul align="right">
-            <li class=""><a class="a_white" href="">제품</a></li>
-            <li class=""><a class="a_white" href="">교체공사</a></li>
-            <li class=""><a class="a_white" href="">서비스</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="metainfo">
+            <div>티센크루프 엘리베이터 @ 2018 </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="">Site map</a></li>
+                    <a href="">Imprint</a></li>
+                    <a href="">Legal notes</a></li>
+                    <a href="">Shares</a></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script>
+        var imgdivwidth = parseInt(document.querySelector(".imgdiv").getBoundingClientRect().width);
+        //console.log(document.querySelector(".imgdiv").getBoundingClientRect().width);
+        //console.log(imgdivwidth);
+        var imgs = document.querySelectorAll(".imgdiv ul li");
+        initimg(imgs);
+        //초기 이미지 세팅
+        var img = imgobj(0);
 
-        </ul>
-    </div>
-</div>
-<div id="metainfo">
-    <div>티센크루프 엘리베이터 @ 2018 </div>
-    <div>
-        <ul>
-            <li>
-                <a href="">Site map</a></li>
-            <a href="">Imprint</a></li>
-            <a href="">Legal notes</a></li>
-            <a href="">Shares</a></li>
-            </li>
-        </ul>
-    </div>
-</div>
-</body>
-<script>
-    var Index = 0;
-    roof();
+        var jepum = false, bumwi = false, company = false;
+        $("#jepum").click(function () {
+            //            $(this).css("background", "#FFFFFF").next("div.dropdown").slideToggle(300).siblings("div.dropdown").slideUp("slow");
+            jepum = !jepum;
+            if (jepum) {
+                $(".closedrop").css("display", "none");
+            }
+            $(".dropdown").slideToggle(300).siblings(".dropdown").slideUp("slow");
+            $(this).siblings("p.head").css("background", "#3399CC");
+        });
+        $("#bumwi").click(function () {
+            bumwi = !bumwi;
+            if (bumwi) {
+                $(".closedrop").css("display", "none");
+            }
 
-    $("#jepum").click(function () {
-//            $(this).css("background", "#FFFFFF").next("div.dropdown").slideToggle(300).siblings("div.dropdown").slideUp("slow");
-        $(".dropdown").slideToggle(300).siblings(".dropdown").slideUp("slow");
-        $(this).siblings("p.head").css("background", "#3399CC");
-    });
-    $("#bumwi").click(function () {
-        $(".dropdown2").slideToggle(300).siblings(".dropdown2").slideUp("slow");
-        $(this).siblings("p.head").css("background", "#3399CC");
-    });
-    $("#company").click(function () {
-        $(".dropdown3").slideToggle(300).siblings(".dropdown3").slideUp("slow");
-        $(this).siblings("p.head").css("background", "#3399CC");
-    });
+            $(".dropdown2").slideToggle(300).siblings(".dropdown2").slideUp("slow");
+            $(this).siblings("p.head").css("background", "#3399CC");
+        });
+        $("#company").click(function () {
+            company = !company;
+            if (company) {
+                $(".closedrop").css("display", "none");
+            }
+
+            $(".dropdown3").slideToggle(300).siblings(".dropdown3").slideUp("slow");
+            $(this).siblings("p.head").css("background", "#3399CC");
+        });
 
 
-    function roof() {
-        var i;
-        var x = document.getElementsByClassName("slides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        Index++;
-        if (Index > x.length) {
-            Index = 1
-        }
-        x[Index - 1].style.display = "block";
-        setTimeout(roof, 3000);
-    }
-</script>
+//        function roof() {
+//            var i;
+//            var x = document.getElementsByClassName("slides");
+//            for (i = 0; i < x.length; i++) {
+//                x[i].style.display = "none";
+//            }
+//            Index++;
+//            if (Index > x.length) {
+//                Index = 1;
+//            }
+//            x[Index - 1].style.display = "block";
+//            setTimeout(roof, 3000);
+//        }
+
+setInterval(function (){
+            sliding(imgs,img,50,-1);
+        },3000)  ;
+
+    </script>
 
 </html>

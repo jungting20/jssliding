@@ -52,10 +52,10 @@
             imgs[changeimgindex].style.left = changeimgleft + 'px';
 
             //다음 이미지로 넘길 경우
-            if(direction == 1){
+             if(direction == 1){
             if(changeimgleft >= 0){
                 img.setobjindex(checkimgindex(changeimgindex));
-                console.log(img.getobjindex());
+                console.log(img.getobjindex(),'음');
                 initimg(imgs,img.getobjindex());
                 return;
             }
@@ -68,10 +68,11 @@
                 return;
             }
 
-            }
+            } 
+           
 
             setTimeout(function(){
-                sliding(imgs,img,10,direction);
+                sliding(imgs,img,frame,direction);
             },20) 
 
         }
