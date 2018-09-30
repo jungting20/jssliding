@@ -374,6 +374,14 @@
         initimg(imgs);
         //초기 이미지 세팅
         var img = imgobj(0);
+        var nbutton = document.getElementById("next");
+        var bbutton = document.getElementById("back");
+        nbutton.addEventListener('click',function(){
+            sliding(imgs,img,100,1);
+        });//end event;
+        bbutton.addEventListener('click',function(){
+            sliding(imgs,img,100,-1);
+        });//end event;
 
         var jepum = false, bumwi = false, company = false;
         $("#jepum").click(function () {
