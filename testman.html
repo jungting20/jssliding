@@ -59,7 +59,6 @@
             .news .news1, .news .news2, .news .news3{float: left;border: 2px; margin: 10px;width:31%;}
             .stage p, .box p{font-size: 24pt; text-align: center;}
             .none{text-decoration: none;}
-
             #logo{color: white; font-size: 15pt; text-decoration: none; padding-left: 40pt; font-weight: bold; }
             #nav{list-style-type: none; height: 50px; padding: 5px 7px; }
             /*슬라이드부분*/
@@ -86,12 +85,24 @@
             .dropdown ul li,.dropdown2 ul li,.dropdown3 ul li{list-style: none; border-bottom: 1px solid silver; width: 30%; margin-top: 10px;}
             .dropdown ul li a{ font-size: 16pt; padding-left: 0px; margin-bottom: 10pt; margin-top: 10pt;}
             .dropdown ul {border-top: 2px solid silver; margin-top: 10px}
+            .one{
+                width: 30%;
+                float: left;
+            }
+            .closedrop{
+                width: 100%;
+            }
+           .fl{
+               width: 100%;
+               float: left;
+           }
+
         </style>
     </head>
     <body>
         <header>
             <div>
-                <div id="menu_top">
+                <div class="fl" id="menu_top">
                     <ul align="right">
                         <li class="li_top"><a class="a_white" href="">>로그인</a></li>
                         <li class="li_top"><a class="a_white" href="">인재채용</a></li>
@@ -118,13 +129,13 @@
             <li class="li_menu"><a class="a_skyblue" href="">교체공사</a></li>
             <li class="li_menu"><a href="#"class="a_skyblue"><span id="company">회사소개</span></a></li>
             <div class="dropdown closedrop">
-                <ul class="one">
-                    <li style="height:90px; border-top:1px solid silver; width: 30%">
+                <div class="one">
+                <ul>
+                    <li style="height:90px; border-top:1px solid silver;">
                         <span class="a_skyblue">개요</span><br>
                         <a href=""class="a_skyblue">제품</a>
                     </li>
                     <li><a href=""class="a_skyblue">엘리베이터</a>
-
                     </li>
                     <li><a href=""class="a_skyblue">에스컬레이터</a></li>
                     <li><a href=""class="a_skyblue">무빙워크</a></li>
@@ -135,7 +146,9 @@
                     <li><a href=""class="a_skyblue">홈 솔루션</a></li>
                     <li><a href=""class="a_skyblue">탑승교</a></li>
                 </ul>
-<!--                <ul class="one">
+                </div>
+                <div class="one">
+                <ul>
                     <li>
                         <span class="a_skyblue">개요</span><br>
                         <a href=""class="a_skyblue">엘리베이터</a>
@@ -143,7 +156,8 @@
                     <li><a href=""class="a_skyblue">enta200</a></li>
                     <li><a href=""class="a_skyblue">Elejet</a></li>
                     <li><a href=""class="a_skyblue">TWIN</a></li>
-                </ul>-->
+                </ul>
+                </div>
             </div>
             <div class="dropdown2 closedrop">
                 <ul>
@@ -173,7 +187,7 @@
         </ul>
         
 
-        <div class="main_wrapper">
+        <div class="main_wrapper fl">
 
             <div class="item1 item">
                 <a href="#">
@@ -235,7 +249,7 @@
             </div>
         </div>
 
-        <div class="stage">
+        <div class="stage fl" >
             <p>티센크루프만의 혁신 기술</p>
             <div class="imgdiv">
                 <ul>
@@ -247,7 +261,7 @@
             </div>
         </div>
 
-        <div class="news">
+        <div class="news fl">
             <div class="news1">
                 <div>
                     <img src="img/news1.png" title="thyssenkrupp Elevator Korea seals the largest TWIN project In Asia.">
@@ -310,13 +324,13 @@
             </div>
 
         </div>
-        <div class="box">
+        <div class="box fl">
             <p>다양한 건물 용도에 적합한 솔루션 제공</p>
             <div>
                 <img src="img/box1.png">
             </div>
         </div>
-        <div class="footer">
+        <div class="footer fl">
             <div>
                 <p class="font_white">Elevator Technology</p>
                 <p class="font_white">코리아</p>
@@ -330,7 +344,7 @@
                 </ul>
             </div>
         </div>
-        <div id="metainfo">
+        <div id="metainfo" class="fl">
             <div>티센크루프 엘리베이터 @ 2018 </div>
             <div>
                 <ul>
@@ -397,7 +411,7 @@
 //            setTimeout(roof, 3000);
 //        }
 
-setInterval(function (){
+    setInterval(function (){
             sliding(imgs,img,50,-1);
         },3000)  ;
 
